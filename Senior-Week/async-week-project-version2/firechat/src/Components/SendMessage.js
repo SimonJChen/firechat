@@ -9,10 +9,12 @@ function SendMessage() {
 
   async function sendMessage(event) {
     event.preventDefault();
-    const { uid } = auth.currentUser;
+    const { uid, photoURL, displayName } = auth.currentUser;
 
     await addDoc(messagesCollectionRef, {
       uid,
+      photoURL,
+      displayName,
       text: message,
       createdAt: serverTimestamp(),
     });
